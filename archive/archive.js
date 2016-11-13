@@ -55,6 +55,4 @@ function renderTags(data) {
 }
 
 
-$.getScript('//code.jquery.com/jquery-1.12.0.min.js', () => {
-  $.get(ghost.url.api('tags')).done(renderTags);
-});
+$.get(ghost.url.api('tags')).done(renderTags);
