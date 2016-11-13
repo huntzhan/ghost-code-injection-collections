@@ -10,7 +10,7 @@ function getScriptWithCache(url, callback) {
 }
 
 
-let prism_base = "https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1";
+let prism_base = "https://cdn.staticfile.org/prism/1.5.1";
 
 
 function loadCss(path) {  
