@@ -1,6 +1,6 @@
 function getScriptWithCache(url, callback) {
   callback = (typeof callback != 'undefined') ? callback : {};
-  $.ajax({
+  return $.ajax({
     type: "GET",
     url: url,
     success: callback,
