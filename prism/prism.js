@@ -30,7 +30,7 @@ function loadPrismRest() {
   let components = ['c', 'cpp', 'python', 'ini'];
   $.when(
     ...components.map(
-      component => $.getScriptWithCache(`${prism_base}/components/prism-${component}.min.js`)
+      component => getScriptWithCache(`${prism_base}/components/prism-${component}.min.js`)
     )
   ).done(() => {
     Prism.highlightAll();
@@ -39,7 +39,7 @@ function loadPrismRest() {
 
 
 function loadPrismMain() {  
-  $.getScriptWithCache(`${prism_base}/prism.min.js`, loadPrismRest);
+  getScriptWithCache(`${prism_base}/prism.min.js`, loadPrismRest);
 }
 
 
