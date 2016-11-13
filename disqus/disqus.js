@@ -1,13 +1,19 @@
+function getSrc() {
+  let thread = document.getElementById('disqus_thread');
+  let shortname = thread.dataset.shortname;
+  return `//${shortname}.disqus.com/embed.js`;
+}
+
+
 function loadDisqus() {  
   var d = document, s = d.createElement('script');
-  s.src = '//huntzhanorg.disqus.com/embed.js';
+  s.src = getSrc();
   s.setAttribute('data-timestamp', +new Date());
   (d.head || d.body).appendChild(s);
 }
 
-window.globalDisqusLoaded = false;
 
-$(window).scroll(function() {
+function loadDisqusOnScroll() {
   if (window.globalDisqusLoaded) {
     return;
   }
@@ -20,4 +26,8 @@ $(window).scroll(function() {
     window.globalDisqusLoaded = true;
     loadDisqus();
   }
-});
+}
+
+
+window.globalDisqusLoaded = false;
+$(window).scroll(loadDisqusOnScroll);
