@@ -39,7 +39,8 @@ function loadCss(path) {
 
 
 function extractDataField(key) {
-  let data = document.currentScript.dataset[key];
+  let currentScript = document.getElementById('load-prism');
+  let data = currentScript.dataset[key];
   if (data) {
     return data.trim().split(/\s+/);
   } else {
