@@ -10,7 +10,7 @@ function getScriptWithCache(url, callback) {
 }
 
 
-let prism_base = "https://cdn.staticfile.org/prism/1.5.1";
+let prism_base = "//cdn.bootcss.com/prism/1.5.1";
 
 
 function toThemePath(theme) {

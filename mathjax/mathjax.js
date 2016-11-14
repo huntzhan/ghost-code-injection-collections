@@ -16,7 +16,7 @@ function loadMathjax() {
   }
 
   getScriptWithCache(
-    "https://cdn.staticfile.org/MathJax/MathJax-2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML",
+    "//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML",
     () => {
       MathJax.Hub.Config({
         tex2jax: {inlineMath: [["$","$"], ["\\(","\\)"]]}
