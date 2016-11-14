@@ -14,7 +14,7 @@ let prism_base = "//cdn.bootcss.com/prism/1.5.1";
 
 
 function toThemePath(theme) {
-  return `${prism_base}/themes/${theme}.min.css`;
+  return `${prism_base}/themes/prism${theme}.min.css`;
 }
 
 
@@ -53,8 +53,11 @@ function extractDataField(key) {
 // return css paths.
 function extractTheme() {
   // prism.min.css, required.
-  let theme = ['prism'];
-  return theme.concat(extractDataField('prismTheme')).map(toThemePath);
+  let basicCss = [''];
+  // add hyphen.
+  let themes = extractDataField('prismTheme').map(theme => `-${theme}`);
+  // join.
+  return basicCss.concat(themes).map(toThemePath);
 }
 
 
