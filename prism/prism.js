@@ -54,7 +54,7 @@ function extractDataField(key) {
 function extractTheme() {
   // prism.min.css, required.
   let theme = ['prism'];
-  return theme.concat(extractDataField('prism-theme')).map(toThemePath);
+  return theme.concat(extractDataField('prismTheme')).map(toThemePath);
 }
 
 
@@ -62,7 +62,7 @@ function extractTheme() {
 // return js paths.
 function extractComponents() {
   let components = ['c', 'markup', 'css', 'javascript'];
-  return components.concat(extractDataField('prism-components')).map(toComponentPath);
+  return components.concat(extractDataField('prismComponents')).map(toComponentPath);
 }
 
 
@@ -71,7 +71,7 @@ function extractComponents() {
 function extractPlugins() {
   let pluginCss = [];
   let pluginJs = [];
-  for (let plugin of extractDataField('prism-plugins')) {
+  for (let plugin of extractDataField('prismPlugins')) {
     let [css, js] = toPluginPath(plugin);
     pluginCss.push(css);
     pluginJs.push(js);
