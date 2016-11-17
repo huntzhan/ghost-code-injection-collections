@@ -66,7 +66,7 @@ function transformComponentName(component) {
     'js': 'javascript',
     'sh': 'bash'
   };
-  return component in mapping ? mapping[component] : component;
+  return component in mapping ? [true, mapping[component]] : [false, component];
 }
 
 
@@ -79,7 +79,15 @@ function extractComponents() {
   for (let e of document.querySelectorAll('pre > code')) {
     for (let className of e.className.trim().split(/\s+/)) {
       if (className.startsWith(prefix)) {
-        let component = transformComponentName(className.substring(prefix.length));
+        // handle cases like 'js' -> 'javascript'.
+        let [transformed, component] = transformComponentName(
+          className.substring(prefix.length)
+        );
+        // inject class if transformation is detected.
+        if (transformed) {
+          e.className += ` ${prefix}${component}`;
+        }
+        // component collected.
         components.push(component);
       }
     }
