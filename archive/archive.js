@@ -1,3 +1,15 @@
+function getScriptWithCache(url, callback) {
+  callback = (typeof callback != 'undefined') ? callback : {};
+  return $.ajax({
+    type: "GET",
+    url: url,
+    success: callback,
+    dataType: "script",
+    cache: true
+  });
+}
+
+
 function renderPosts(tags, ...datas) {  
   // inject to
   // <div>
@@ -65,5 +77,13 @@ function renderTags(data) {
   );
 }
 
-
-$.get(ghost.url.api('tags')).done(renderTags);
+getScriptWithCache('https://ogkj5pyeh.qnssl.com/jalc.min.js', () => {
+  $.ajax({
+    url: ghost.url.api('tags'),
+    localCache: true,
+    cacheTTL: 7 * 24,
+    cacheKey: `ghost-archive-tags`
+  }).done(
+    renderTags
+  );
+});
