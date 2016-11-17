@@ -74,7 +74,7 @@ function extractComponents() {
       }
     }
   }
-  return components;
+  return components.map(toComponentPath);
 }
 
 
