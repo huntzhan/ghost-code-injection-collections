@@ -61,11 +61,20 @@ function extractTheme() {
 }
 
 
-// data-prism-components="xxx xxx"
-// return js paths.
+// automatically load components.
 function extractComponents() {
+  const prefix = 'language-';
+  // default components.
   let components = ['c', 'markup', 'css', 'javascript'];
-  return components.concat(extractDataField('prismComponents')).map(toComponentPath);
+  // dynamic loaded.
+  for (let e of document.querySelectorAll('pre > code')) {
+    for (let className of e.className.trim().split(/\s+/)) {
+      if (className.startsWith(prefix)) {
+        components.push(className.substring(prefix.length));
+      }
+    }
+  }
+  return components;
 }
 
 
