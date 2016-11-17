@@ -61,6 +61,15 @@ function extractTheme() {
 }
 
 
+function transformComponentName(component) {
+  const mapping = {
+    'js': 'javascript',
+    'sh': 'bash'
+  };
+  return component in mapping ? mapping[component] : component;
+}
+
+
 // automatically load components.
 function extractComponents() {
   const prefix = 'language-';
@@ -70,7 +79,8 @@ function extractComponents() {
   for (let e of document.querySelectorAll('pre > code')) {
     for (let className of e.className.trim().split(/\s+/)) {
       if (className.startsWith(prefix)) {
-        components.push(className.substring(prefix.length));
+        let component = transformComponentName(className.substring(prefix.length));
+        components.push(component);
       }
     }
   }
