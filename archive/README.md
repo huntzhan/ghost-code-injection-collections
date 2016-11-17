@@ -9,7 +9,7 @@ Inject following code to your post.
 </div>
 
 <script type="text/javascript" src="//cdn.bootcss.com/jquery/1.12.0/jquery.min.js"></script>
-
+<script type="text/javascript" src="https://ogkj5pyeh.qnssl.com/jalc.min.js"></script>
 <script type="text/javascript" src="https://ogkj5pyeh.qnssl.com/archive.js"></script>
 ```
 

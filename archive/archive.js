@@ -51,7 +51,17 @@ function renderTags(data) {
     }
   ));
 
-  $.when(names, ...GETUrls.map(url => $.get(url))).done(renderPosts);
+  $.when(
+    names,
+    ...GETUrls.map(GETUrl => $.ajax({
+      url: GETUrl,
+      // https://github.com/SaneMethod/jquery-ajax-localstorage-cache
+      localCache: true,
+      cacheTTL: 3
+    }))
+  ).done(
+    renderPosts
+  );
 }
 
 
