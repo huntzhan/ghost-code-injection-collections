@@ -44,20 +44,21 @@ function renderTags(data) {
   let slugs = data.tags.map(obj => obj.slug);
   let names = data.tags.map(obj => obj.name);
 
-  let GETUrls = slugs.map(slug => ghost.url.api(
-    'posts', {
-      limit: 'all',
-      filter: `tags:[${slug}]`
-    }
-  ));
-
   $.when(
     names,
-    ...GETUrls.map(GETUrl => $.ajax({
-      url: GETUrl,
+    ...slugs.map(slug => $.ajax({
+      // generate request url.
+      url: ghost.url.api(
+        'posts', {
+          limit: 'all',
+          filter: `tags:[${slug}]`
+        }
+      ),
+      // enable cache.
       // https://github.com/SaneMethod/jquery-ajax-localstorage-cache
       localCache: true,
-      cacheTTL: 3
+      cacheTTL: 3,
+      cacheKey: `ghost-archive-tag-${slug}`
     }))
   ).done(
     renderPosts
