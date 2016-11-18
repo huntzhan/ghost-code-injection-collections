@@ -132,13 +132,14 @@ function loadPrismRest() {
   // patch style.
   $(
     `<style>
-     .token.string {
+     .language-css .token.string,
+     .style .token.string,
+     .token.entity,
+     .token.operator,
+     .token.url {
        background: hsla(0, 0%, 100%, 0) none repeat scroll 0 0;
      }
-     .token.operator {
-       background: hsla(0, 0%, 100%, 0) none repeat scroll 0 0;
-     }
-    </style>`
+     </style>`
   ).appendTo("head");
 
   // load js.
