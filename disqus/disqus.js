@@ -1,3 +1,9 @@
+var disqus_config = function () {
+  // https://help.disqus.com/customer/portal/articles/472098-javascript-configuration-variables#thispageurl
+  this.page.url = window.location.href.split('?')[0];
+};
+
+
 function getSrc() {
   let thread = document.getElementById('disqus_thread');
   let shortname = thread.dataset.shortname;
